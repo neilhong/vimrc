@@ -25,6 +25,14 @@ function! s:ToggleWhitespaceMatch(mode)
   else
     let w:whitespace_match_number =  matchadd('ExtraWhitespace', pattern)
   endif
-endfunction  
+endfunction
+
+autocmd BufWritePre * :%s/\s\+$//e
 
 
+let g:go_fmt_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet']
+let g:go_metalinter_deadline = "5s"
